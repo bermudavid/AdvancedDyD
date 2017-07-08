@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "Components/HierarchicalInstancedStaticMeshComponent.h"
+#include "ConstructorHelpers.h"
 #include "AdvancedDyDGameModeBase.generated.h"
 
 /**
@@ -13,10 +15,5 @@ UCLASS()
 class ADVANCEDDYD_API AAdvancedDyDGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grid")
-		int32 funciona;
-	void BeginPlay() override;
-
 
 };

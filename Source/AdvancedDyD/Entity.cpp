@@ -122,6 +122,45 @@ int32 AEntity::DistanceToTarget(AActor * target) {
 	return ftsize; // puede que haya que redondear a múltiplos de 5
 }
 
+int32 AEntity::DistanceToTransform(FTransform t)
+{
+	DrawDebugDirectionalArrow(
+		GetWorld(),
+		GetActorLocation(),
+		t.GetLocation(),
+		500,
+		FColor(200, 200, 200),
+		true, -1, 0,
+		4
+	);
+	FVector InitPoint = GetActorLocation();
+	FVector EndPoint = t.GetLocation();
+
+	FVector dif = GetActorLocation() - t.GetLocation();
+	//para hayar la distancia necesitamos el tamaño de la diferencia de vectores
+	float size = dif.Size();
+	// para pasar a pies sabemos que cada 100 de distancia son 5 pies, porque 100 mide cada casilla de centro a centro)
+	int32 ftsize = int32((size / 100) * 5);
+
+	DrawDebugString(
+		GetWorld(),
+		FVector(
+		(InitPoint.X + EndPoint.X) / 2,
+			(InitPoint.Y + EndPoint.Y) / 2,
+			(InitPoint.Z + EndPoint.Z) / 2 + 25
+		),
+		FString::FromInt(ftsize).Append(" ft."),
+		NULL,
+		FColor::White,
+		-1.0f
+	);
+
+
+
+
+	return ftsize;
+}
+
 
 bool AEntity::ToAttackTest(AEntity* target) {
 	TArray<FVector> arra = { 

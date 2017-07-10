@@ -157,6 +157,8 @@ public:
 		bool ToAttackTest(AEntity* target);
 	UFUNCTION(BlueprintCallable)
 		int32 DistanceToTarget(AActor* target);
+	UFUNCTION(BlueprintCallable)
+		int32 DistanceToTransform(FTransform target);
 
 	
 	
